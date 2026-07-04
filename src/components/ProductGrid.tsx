@@ -46,6 +46,15 @@ export default function ProductGrid({ drops, onAddToCart, cartQuantities }: Prod
 
   const recommendation = getBespokeRecommendation();
 
+  // Synchronize fitting profile to localStorage for secure checkout integration
+  useEffect(() => {
+    localStorage.setItem('dadzy_tummy_profile', tummyProfile);
+  }, [tummyProfile]);
+
+  useEffect(() => {
+    localStorage.setItem('dadzy_shoulder_profile', shoulderProfile);
+  }, [shoulderProfile]);
+
   // Wishlist persistence
   const [wishlist, setWishlist] = useState<string[]>(() => {
     try {

@@ -37,6 +37,8 @@ export default function CartDrawer({
   };
 
   const totalAmount = cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+  const tummyProfile = localStorage.getItem('dadzy_tummy_profile') || 'dignified';
+  const shoulderProfile = localStorage.getItem('dadzy_shoulder_profile') || 'standard';
 
   const handleStartCheckout = () => {
     // Step 1: Simulate Medusa securing advisory row locks on Postgres DB
@@ -216,6 +218,22 @@ export default function CartDrawer({
                       </div>
                     </div>
 
+                    {/* Bespoke Fit Allocation Indicator */}
+                    <div className="bg-[#FAF8F5] border border-[#EBE3D5] p-3 text-[9px] space-y-1">
+                      <span className="text-black font-bold uppercase tracking-wider block font-sans">Bespoke Tailoring Registry</span>
+                      <div className="flex justify-between text-neutral-600">
+                        <span>Waistline Silhouette:</span>
+                        <span className="font-bold text-black uppercase">{tummyProfile}</span>
+                      </div>
+                      <div className="flex justify-between text-neutral-600">
+                        <span>Shoulder Profile:</span>
+                        <span className="font-bold text-black uppercase">{shoulderProfile}</span>
+                      </div>
+                      <p className="text-[8px] text-neutral-500 pt-1 leading-normal font-sans">
+                        *These measurements will be linked to your private cabinet registry for automatic lot allocation.
+                      </p>
+                    </div>
+
                     {/* Method Selector */}
                     <div className="grid grid-cols-3 gap-2">
                       {(['upi', 'card', 'netbanking'] as PaymentMethod[]).map((m) => (
@@ -352,6 +370,10 @@ export default function CartDrawer({
                       <div className="flex justify-between">
                         <span className="text-neutral-500">Shipment Status:</span>
                         <span className="text-brand font-bold">Allocated in Mumbai Vault</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-neutral-500">Tailoring Profile:</span>
+                        <span className="text-brand font-bold">{tummyProfile} / {shoulderProfile}</span>
                       </div>
                     </div>
 
