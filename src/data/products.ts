@@ -90,7 +90,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'A crisp, double-weave cotton canvas trouser designed with hand-pressed front creases. It provides an impressive, structural silhouette that pairs flawlessly with any premium knit polo.',
         price: 15500,
-        image: 'https://images.unsplash.com/photo-1605462863863-10d9e47e15ee?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_ivory_trouser.png',
         specs: [
           '100% Double-Weave Organic Cotton Canvas',
           'Hidden elastic waistband expansion tabs',
@@ -147,7 +147,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Shirts",
         description: 'Structured dress shirt in French blue Royal Oxford weave. Designed with a generous body pattern and premium collar stays for a commanding boardroom look.',
         price: 15800,
-        image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_blue_shirt.png',
         specs: [
           '100% Sea Island Cotton, Royal Oxford weave',
           'Stiff spread collar with brass removable stays',
@@ -175,7 +175,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Elite Knitwear",
         description: 'Crafted from dense, high-gauge merino knit designed to repel creases. Engineered for long flights or executive boardrooms, offering unrivaled comfort with extreme poise.',
         price: 17800,
-        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_charcoal_polo.png',
         specs: [
           '100% Anti-Crease Extrafine Australian Merino Wool',
           'Deep zipperless open collar (brutalist look)',
@@ -194,7 +194,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Shirts",
         description: 'An airy, sage green casual shirt cut from organic Italian flax linen. Pre-washed for superior softness and a relaxed look.',
         price: 16500,
-        image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_linen_shirt.png',
         specs: [
           '100% Organic Italian Flax Linen',
           'Pre-washed with volcanic pumice for vintage softness',
@@ -232,7 +232,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'A fluid champagne trouser cut from a pure silk and Belgian linen weave. Features double-pleated fronts and adjustable metal tabs.',
         price: 28500,
-        image: 'https://images.unsplash.com/photo-1506634572416-48cdfe530110?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_silk_trouser.png',
         specs: [
           '50% Belgian Linen, 50% Mulberry Silk',
           'Adjustable double-buckle steel side tabs',
@@ -251,7 +251,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'An unstructured shawl-collar dinner jacket in smoked silk jacquard. Features detailed floral patterns woven directly into the fabric.',
         price: 95000,
-        image: 'https://images.unsplash.com/photo-1555069519-03000b2ecafc?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_dinner_jacket.png',
         specs: [
           '100% Woven Silk Jacquard',
           'Shawl collar in contrast black grosgrain silk',
@@ -270,7 +270,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'A premium six-button vest cut in charcoal herringbone wool. Designed to complement formal poplin shirts in boardroom scenarios.',
         price: 19500,
-        image: 'https://images.unsplash.com/photo-1621579682970-a97e2c5a7201?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_wool_waistcoat.png',
         specs: [
           '100% Harris Tweed virgin wool',
           'Premium satin back panels with adjustable buckle',
@@ -289,7 +289,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'An iconic bandhgala sherwani in pure handloom raw silk. Embossed with subtle tone-on-tone embroidery on the collar and button placket.',
         price: 110000,
-        image: 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_raw_silk_sherwani.png',
         specs: [
           '100% Handloom Raw Silk in gold-champagne hue',
           'Hand-embellished zardozi gold-thread details',
