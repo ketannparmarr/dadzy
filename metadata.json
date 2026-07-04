@@ -1,0 +1,6 @@
+{
+  "name": "DADZY",
+  "description": "Premium, cinematic e-commerce platform for modern fathers, seniors, and High-Net-Worth Individuals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

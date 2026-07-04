@@ -1,0 +1,146 @@
+name: DADZY CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main, staging ]
+
+jobs:
+  lint-and-scan:
+    name: Lint, Scan, and Verify Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Lint / Type Checks
+        run: npm run lint
+
+      # Scan for hardcoded credentials/secrets
+      - name: Run Secret Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+        continue-on-error: true # For demonstration, allow scan errors to not block flow
+
+      # Dependency vulnerability scanning
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ''
+          scan-type: 'fs'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+        continue-on-error: true
+
+  build-and-deploy:
+    name: Build Docker Images and Deploy to GCP Cloud Run
+    needs: lint-and-scan
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging') && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Determine Active Environment based on Git Branch
+      - name: Set Active Environment
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "ENV_NAME=production" >> $GITHUB_ENV
+          else
+            echo "ENV_NAME=staging" >> $GITHUB_ENV
+          fi
+
+      # Determine SemVer tagging
+      - name: Determine Semantic Version
+        id: versioning
+        run: |
+          MAJOR=1
+          MINOR=0
+          PATCH=${{ github.run_number }}
+          VERSION="v$MAJOR.$MINOR.$PATCH"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Determined version: $VERSION"
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Configure Docker for Artifact Registry
+        run: |
+          gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+      # Build and push frontend image
+      - name: Build and Push Frontend Image
+        run: |
+          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dadzy/frontend-$ENV_NAME:$VERSION"
+          docker build -t $IMAGE_TAG -f Dockerfile .
+          docker push $IMAGE_TAG
+          echo "FRONTEND_IMAGE=$IMAGE_TAG" >> $GITHUB_ENV
+
+      # Build and push Medusa image
+      - name: Build and Push Medusa Image
+        run: |
+          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dadzy/medusa-$ENV_NAME:$VERSION"
+          docker build -t $IMAGE_TAG -f Dockerfile.medusa .
+          docker push $IMAGE_TAG
+          echo "MEDUSA_IMAGE=$IMAGE_TAG" >> $GITHUB_ENV
+
+      # Deploy Medusa backend service
+      - name: Deploy Medusa Backend to Cloud Run
+        id: deploy-medusa
+        run: |
+          gcloud run deploy dadzy-medusa-backend-$ENV_NAME \
+            --image $MEDUSA_IMAGE \
+            --region us-central1 \
+            --platform managed \
+            --allow-unauthenticated \
+            --format="value(status.url)" > medusa_url.txt
+          echo "MEDUSA_URL=$(cat medusa_url.txt)" >> $GITHUB_ENV
+
+      # Deploy frontend service
+      - name: Deploy Frontend to Cloud Run
+        id: deploy-frontend
+        run: |
+          gcloud run deploy dadzy-frontend-$ENV_NAME \
+            --image $FRONTEND_IMAGE \
+            --region us-central1 \
+            --platform managed \
+            --allow-unauthenticated \
+            --update-env-vars MEDUSA_BACKEND_URL=$MEDUSA_URL \
+            --format="value(status.url)" > frontend_url.txt
+          echo "FRONTEND_URL=$(cat frontend_url.txt)" >> $GITHUB_ENV
+
+      # Verify healthcheck with automatic rollback trigger
+      - name: Health Check and Verification
+        run: |
+          echo "Checking service health..."
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" $FRONTEND_URL/api/health)
+          if [ "$STATUS_CODE" -ne 200 ]; then
+            echo "Health check failed with status $STATUS_CODE. Triggering rollback!"
+            gcloud run services update dadzy-frontend-$ENV_NAME --region us-central1 --rollback-to-stable
+            exit 1
+          fi
+          echo "Deployment successful and healthy!"

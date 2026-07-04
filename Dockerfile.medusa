@@ -1,0 +1,34 @@
+# --- BUILD STAGE ---
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# Install build dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source and build (including Medusa admin if configured)
+COPY . .
+RUN npm run build
+
+# --- RUNNER STAGE ---
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY package*.json ./
+RUN npm install --only=production
+
+# Copy built files, migrations, and config
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/medusa-config.js ./medusa-config.js
+COPY --from=builder /app/src ./src
+
+# Set security context: run as non-root user
+USER node
+
+# Expose Medusa port
+EXPOSE 9000
+
+# Run migrations and start the Medusa commerce engine
+CMD ["sh", "-c", "npx medusa db:migrate && npm run start"]
