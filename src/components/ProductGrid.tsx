@@ -16,6 +16,35 @@ export default function ProductGrid({ drops, onAddToCart, cartQuantities }: Prod
   const [activeDropTab, setActiveDropTab] = useState<'active' | 'upcoming'>('active');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string>('L');
+  const [tummyProfile, setTummyProfile] = useState<'flat' | 'dignified' | 'prominent'>('dignified');
+  const [shoulderProfile, setShoulderProfile] = useState<'standard' | 'sloped' | 'square'>('standard');
+
+  // Dynamic Sizing Recommendation logic for senior figures
+  const getBespokeRecommendation = () => {
+    let baseSize = 'L';
+    let notes = '';
+
+    if (tummyProfile === 'prominent') {
+      baseSize = 'XXL';
+      notes = 'Our relaxed-waist curvature adds 3cm of circumference to sit comfortably around the abdomen without feeling restrictive.';
+    } else if (tummyProfile === 'dignified') {
+      baseSize = 'XL';
+      notes = 'A balanced, slightly relaxed cut provides natural mobility for active business travel and occasion dinners.';
+    } else {
+      baseSize = 'M';
+      notes = 'A clean, closer fit that maintains structured lines across the chest and torso.';
+    }
+
+    if (shoulderProfile === 'square') {
+      notes += ' The hand-felled seams are set 1.5cm wider for enhanced drape.';
+    } else if (shoulderProfile === 'sloped') {
+      notes += ' Soft-padded seamless construction is utilized to frame the shoulders elegantly.';
+    }
+
+    return { size: baseSize, notes };
+  };
+
+  const recommendation = getBespokeRecommendation();
 
   // Wishlist persistence
   const [wishlist, setWishlist] = useState<string[]>(() => {
@@ -326,7 +355,7 @@ export default function ProductGrid({ drops, onAddToCart, cartQuantities }: Prod
                     </ul>
                   </div>
 
-                  {/* Fabric & Materials detail */}
+                  {/* Sourcing details */}
                   <div className="border-t border-subtle pt-4 space-y-2">
                     <span className="text-[9px] font-mono text-neutral-400 uppercase block">MATERIALS & TRACEABILITY</span>
                     <div className="flex flex-wrap gap-1">
@@ -339,6 +368,78 @@ export default function ProductGrid({ drops, onAddToCart, cartQuantities }: Prod
                     <p className="text-[9px] font-mono text-neutral-400 uppercase pt-1">
                       Sourced/Crafted: {selectedProduct.origin}
                     </p>
+                  </div>
+
+                  {/* Bespoke Silhouette Fit Guide */}
+                  <div className="border-t border-subtle pt-4 space-y-4">
+                    <span className="text-[9px] font-mono text-neutral-400 uppercase block font-bold">BESPOKE SILHOUETTE FIT GUIDE</span>
+                    
+                    {/* Tummy Profile Selector */}
+                    <div className="space-y-2">
+                      <span className="text-[9px] font-mono text-neutral-500 uppercase block">Waistline / Tummy Profile</span>
+                      <div className="grid grid-cols-3 gap-1">
+                        {[
+                          { id: 'flat', label: 'Flat' },
+                          { id: 'dignified', label: 'Dignified' },
+                          { id: 'prominent', label: 'Prominent' }
+                        ].map((item) => (
+                          <button
+                            key={item.id}
+                            type="button"
+                            onClick={() => {
+                              setTummyProfile(item.id as any);
+                              const newSize = item.id === 'prominent' ? 'XXL' : item.id === 'dignified' ? 'XL' : 'M';
+                              setSelectedSize(newSize);
+                            }}
+                            className={`py-2 text-[9px] font-mono border transition-all cursor-pointer ${
+                              tummyProfile === item.id
+                                ? 'bg-black text-white border-black font-bold'
+                                : 'bg-white text-neutral-500 border-neutral-200 hover:border-black hover:text-black'
+                            }`}
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Shoulder Profile Selector */}
+                    <div className="space-y-2">
+                      <span className="text-[9px] font-mono text-neutral-500 uppercase block">Shoulder Profile</span>
+                      <div className="grid grid-cols-3 gap-1">
+                        {[
+                          { id: 'standard', label: 'Standard' },
+                          { id: 'sloped', label: 'Sloped' },
+                          { id: 'square', label: 'Square' }
+                        ].map((item) => (
+                          <button
+                            key={item.id}
+                            type="button"
+                            onClick={() => setShoulderProfile(item.id as any)}
+                            className={`py-2 text-[9px] font-mono border transition-all cursor-pointer ${
+                              shoulderProfile === item.id
+                                ? 'bg-black text-white border-black font-bold'
+                                : 'bg-white text-neutral-500 border-neutral-200 hover:border-black hover:text-black'
+                            }`}
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Tailoring Note Box */}
+                    <div className="bg-[#F9F9F9] border border-subtle p-3 space-y-1.5">
+                      <div className="flex justify-between items-center text-[9px] font-mono">
+                        <span className="text-black font-bold">SILHOUETTE SIZE SUGGESTION:</span>
+                        <span className="bg-brand/15 text-brand px-1.5 py-0.5 rounded-none font-bold text-[10px]">
+                          SIZE {recommendation.size}
+                        </span>
+                      </div>
+                      <p className="text-[9px] font-mono text-neutral-600 leading-relaxed">
+                        {recommendation.notes}
+                      </p>
+                    </div>
                   </div>
 
                   {/* S, M, L, XL, XXL Size Selector */}
