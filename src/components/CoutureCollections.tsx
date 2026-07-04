@@ -52,7 +52,7 @@ export default function CoutureCollections({ products, onAddToCart, cartQuantiti
           <div className="md:col-span-7 group relative bg-white border border-subtle p-3 rounded-none transition-all duration-500 hover:border-black">
             <div className="aspect-[4/5] bg-neutral-100 overflow-hidden relative">
               <img
-                src="/src/assets/images/dad_lifestyle_polo.png"
+                src="/images/dad_lifestyle_polo.png"
                 alt="The Atelier Silk-Cotton Polo on a distinguished gentleman"
                 className="w-full h-full object-cover grayscale contrast-110 brightness-95 group-hover:grayscale-0 transition-all duration-700 hover:scale-101"
                 referrerPolicy="no-referrer"
@@ -149,7 +149,7 @@ export default function CoutureCollections({ products, onAddToCart, cartQuantiti
           <div className="md:col-span-7 order-1 md:order-2 group relative bg-[#F9F9F9] border border-subtle p-3 rounded-none transition-all duration-500 hover:border-black">
             <div className="aspect-[4/5] bg-white overflow-hidden relative">
               <img
-                src="/src/assets/images/dad_editorial_blazer.png"
+                src="/images/dad_editorial_blazer.png"
                 alt="The Tailored Blazer Jacket styled elegantly"
                 className="w-full h-full object-cover grayscale contrast-110 brightness-95 group-hover:grayscale-0 transition-all duration-700 hover:scale-101"
                 referrerPolicy="no-referrer"
@@ -174,7 +174,7 @@ export default function CoutureCollections({ products, onAddToCart, cartQuantiti
           <div className="md:col-span-7 group relative bg-white border border-subtle p-3 rounded-none transition-all duration-500 hover:border-black">
             <div className="aspect-[4/5] bg-neutral-100 overflow-hidden relative">
               <img
-                src="/src/assets/images/dad_pleated_trouser.png"
+                src="/images/dad_pleated_trouser.png"
                 alt="The Sartorial Pleated Trouser close up drape details"
                 className="w-full h-full object-cover grayscale contrast-110 brightness-95 group-hover:grayscale-0 transition-all duration-700 hover:scale-101"
                 referrerPolicy="no-referrer"

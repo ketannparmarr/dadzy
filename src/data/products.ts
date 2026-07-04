@@ -14,7 +14,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Elite Knitwear",
         description: 'A masterpiece of casual refinement. Knitted from 18-gauge organic cotton and fine mulberry silk, offering a remarkably soft touch and a structured, elegant drape that flatters the senior physique.',
         price: 14500,
-        image: '/src/assets/images/dad_lifestyle_polo.png',
+        image: '/images/dad_lifestyle_polo.png',
         specs: [
           '55% Pure Mulberry Silk, 45% Organic Giza Cotton',
           'Highly breathable 18-gauge flat-knit mesh collar',
@@ -33,7 +33,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'Sartorially cut from a premium linen-wool blend. Tailored with structured shoulders and a refined torso to deliver a clean, dignified silhouette for formal or leisure afternoons.',
         price: 32000,
-        image: '/src/assets/images/dad_editorial_blazer.png',
+        image: '/images/dad_editorial_blazer.png',
         specs: [
           'High-grade Linen & Fine Virgin Wool blend',
           'Hand-stitched real horn button closure',
@@ -52,7 +52,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'Double-pleated front with adjustable side tabs and a medium-rise waist, striking the perfect balance between timeless poise and modern ease.',
         price: 18500,
-        image: '/src/assets/images/dad_pleated_trouser.png',
+        image: '/images/dad_pleated_trouser.png',
         specs: [
           '65% Italian Flax Linen, 35% Virgin Merino Wool',
           'Adjustable double-buckle steel side adjusters (no belt loops)',
@@ -71,7 +71,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Elite Knitwear",
         description: 'Sourced from extrafine Australian merino wool and mercerized cotton for a subtle, lustrous sheen that remains immaculate throughout active warm-weather days.',
         price: 16200,
-        image: '/src/assets/images/dad_olive_polo.png',
+        image: '/images/dad_olive_polo.png',
         specs: [
           '70% Australian Extrafine Merino Wool, 30% Mercerized Cotton',
           'Three-button placket with real horn buttons',
@@ -90,7 +90,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'A crisp, double-weave cotton canvas trouser designed with hand-pressed front creases. It provides an impressive, structural silhouette that pairs flawlessly with any premium knit polo.',
         price: 15500,
-        image: '/src/assets/images/dad_ivory_trouser.png',
+        image: '/images/dad_ivory_trouser.png',
         specs: [
           '100% Double-Weave Organic Cotton Canvas',
           'Hidden elastic waistband expansion tabs',
@@ -109,7 +109,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'Unstructured blazer jacket in ultra-fine Loro Piana cashmere. Tailored specifically with room at the waist and shoulders to provide business executives with executive authority and supreme comfort.',
         price: 84000,
-        image: '/src/assets/images/dad_cashmere_blazer.png',
+        image: '/images/dad_cashmere_blazer.png',
         specs: [
           '100% Pure Loro Piana Cashmere',
           'Silk lining detailing in dark burgundy',
@@ -128,7 +128,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Shirts",
         description: 'A sleek, long-sleeved dress shirt crafted from dense Giza 87 cotton poplin, dyed in dark charcoal. Tailored with a stiff mandarin collar that frames the neck.',
         price: 13500,
-        image: '/src/assets/images/dad_classic_shirt.png',
+        image: '/images/dad_classic_shirt.png',
         specs: [
           '100% Egyptian Giza 87 Cotton Poplin',
           'Rigid mandarin-style structured collar',
@@ -147,7 +147,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Shirts",
         description: 'Structured dress shirt in French blue Royal Oxford weave. Designed with a generous body pattern and premium collar stays for a commanding boardroom look.',
         price: 15800,
-        image: '/src/assets/images/dad_blue_shirt.png',
+        image: '/images/dad_blue_shirt.png',
         specs: [
           '100% Sea Island Cotton, Royal Oxford weave',
           'Stiff spread collar with brass removable stays',
@@ -175,7 +175,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Elite Knitwear",
         description: 'Crafted from dense, high-gauge merino knit designed to repel creases. Engineered for long flights or executive boardrooms, offering unrivaled comfort with extreme poise.',
         price: 17800,
-        image: '/src/assets/images/dad_charcoal_polo.png',
+        image: '/images/dad_charcoal_polo.png',
         specs: [
           '100% Anti-Crease Extrafine Australian Merino Wool',
           'Deep zipperless open collar (brutalist look)',
@@ -194,7 +194,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Shirts",
         description: 'An airy, sage green casual shirt cut from organic Italian flax linen. Pre-washed for superior softness and a relaxed look.',
         price: 16500,
-        image: '/src/assets/images/dad_linen_shirt.png',
+        image: '/images/dad_linen_shirt.png',
         specs: [
           '100% Organic Italian Flax Linen',
           'Pre-washed with volcanic pumice for vintage softness',
@@ -213,7 +213,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'Tailored trousers in midnight navy superfine worsted wool. Engineered with a customizable hidden flex waistband that adjusts dynamically.',
         price: 24000,
-        image: '/src/assets/images/dad_navy_trouser.png',
+        image: '/images/dad_navy_trouser.png',
         specs: [
           '100% Super 130s Worsted Merino Wool',
           'Internal rubber shirt grips on the inner waistband',
@@ -232,7 +232,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'A fluid champagne trouser cut from a pure silk and Belgian linen weave. Features double-pleated fronts and adjustable metal tabs.',
         price: 28500,
-        image: '/src/assets/images/dad_silk_trouser.png',
+        image: '/images/dad_silk_trouser.png',
         specs: [
           '50% Belgian Linen, 50% Mulberry Silk',
           'Adjustable double-buckle steel side tabs',
@@ -251,7 +251,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'An unstructured shawl-collar dinner jacket in smoked silk jacquard. Features detailed floral patterns woven directly into the fabric.',
         price: 95000,
-        image: '/src/assets/images/dad_dinner_jacket.png',
+        image: '/images/dad_dinner_jacket.png',
         specs: [
           '100% Woven Silk Jacquard',
           'Shawl collar in contrast black grosgrain silk',
@@ -270,7 +270,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'A premium six-button vest cut in charcoal herringbone wool. Designed to complement formal poplin shirts in boardroom scenarios.',
         price: 19500,
-        image: '/src/assets/images/dad_wool_waistcoat.png',
+        image: '/images/dad_wool_waistcoat.png',
         specs: [
           '100% Harris Tweed virgin wool',
           'Premium satin back panels with adjustable buckle',
@@ -289,7 +289,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'An iconic bandhgala sherwani in pure handloom raw silk. Embossed with subtle tone-on-tone embroidery on the collar and button placket.',
         price: 110000,
-        image: '/src/assets/images/dad_raw_silk_sherwani.png',
+        image: '/images/dad_raw_silk_sherwani.png',
         specs: [
           '100% Handloom Raw Silk in gold-champagne hue',
           'Hand-embellished zardozi gold-thread details',
