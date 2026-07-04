@@ -16,6 +16,12 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [hniSubscribed, setHniSubscribed] = useState(false);
   const [hniEmail, setHniEmail] = useState('');
+  const [fontScale, setFontScale] = useState<'standard' | 'readable' | 'accessible'>('standard');
+
+  React.useEffect(() => {
+    document.documentElement.classList.remove('font-size-standard', 'font-size-readable', 'font-size-accessible');
+    document.documentElement.classList.add(`font-size-${fontScale}`);
+  }, [fontScale]);
 
   const handleHniSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,6 +180,32 @@ export default function App() {
             <span className="text-[8px] font-mono tracking-widest-mega text-neutral-500">
               PARENT COMPANY: VIMAL PARMAR COLLECTIONS
             </span>
+          </div>
+
+          {/* Cinematic Typography Readability Scales */}
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <span className="text-[8px] font-mono tracking-widest-mega text-neutral-400 uppercase font-bold">
+              READABILITY SCALE
+            </span>
+            <div className="flex border border-subtle">
+              {[
+                { id: 'standard', label: 'STANDARD' },
+                { id: 'readable', label: 'READABLE' },
+                { id: 'accessible', label: 'ACCESSIBLE' }
+              ].map((scale) => (
+                <button
+                  key={scale.id}
+                  onClick={() => setFontScale(scale.id as any)}
+                  className={`px-3 py-1.5 text-[8px] font-mono tracking-widest uppercase cursor-pointer transition-colors ${
+                    fontScale === scale.id
+                      ? 'bg-black text-white font-bold'
+                      : 'bg-transparent text-neutral-500 hover:text-black hover:bg-neutral-50'
+                  } ${scale.id !== 'standard' ? 'border-l border-subtle' : ''}`}
+                >
+                  {scale.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Discreet Minimalist Email Capture for HNI Access */}

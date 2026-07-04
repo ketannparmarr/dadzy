@@ -68,3 +68,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.2);
 }
+
+/* Cinematic Typography Sizing Scales */
+.font-size-standard {
+  font-size: 16px;
+}
+.font-size-readable {
+  font-size: 18px; /* 12.5% scale up */
+}
+.font-size-accessible {
+  font-size: 20px; /* 25% scale up */
+}
+

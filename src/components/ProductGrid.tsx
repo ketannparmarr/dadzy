@@ -440,6 +440,24 @@ export default function ProductGrid({ drops, onAddToCart, cartQuantities }: Prod
                         {recommendation.notes}
                       </p>
                     </div>
+
+                    {/* Live Allocation Queue Status */}
+                    {selectedProduct.stock > 0 && (
+                      <div className="border border-neutral-200 bg-neutral-50 p-3 space-y-1.5 flex flex-col">
+                        <div className="flex items-center space-x-1.5 text-[8px] font-mono text-black font-bold uppercase tracking-widest">
+                          <span className="h-1.5 w-1.5 rounded-full bg-black inline-block animate-pulse"></span>
+                          <span>LIVE COUTURE QUEUE</span>
+                        </div>
+                        <div className="flex justify-between items-baseline text-[9px] font-mono text-neutral-600">
+                          <span>Active Viewers:</span>
+                          <span className="text-black font-bold">3 Patrons auditing</span>
+                        </div>
+                        <div className="flex justify-between items-baseline text-[9px] font-mono text-neutral-500 pt-1 border-t border-dashed border-neutral-200">
+                          <span>Lot Allocation:</span>
+                          <span className="text-black font-bold">Only 1 of {selectedProduct.stock} slots remaining</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* S, M, L, XL, XXL Size Selector */}
