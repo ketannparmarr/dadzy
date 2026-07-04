@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://github.com/ketannparmarr/dadzy/sitemap.xml
