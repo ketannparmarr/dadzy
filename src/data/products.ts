@@ -71,7 +71,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Elite Knitwear",
         description: 'Sourced from extrafine Australian merino wool and mercerized cotton for a subtle, lustrous sheen that remains immaculate throughout active warm-weather days.',
         price: 16200,
-        image: 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_olive_polo.png',
         specs: [
           '70% Australian Extrafine Merino Wool, 30% Mercerized Cotton',
           'Three-button placket with real horn buttons',
@@ -109,7 +109,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Couture Jackets",
         description: 'Unstructured blazer jacket in ultra-fine Loro Piana cashmere. Tailored specifically with room at the waist and shoulders to provide business executives with executive authority and supreme comfort.',
         price: 84000,
-        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_cashmere_blazer.png',
         specs: [
           '100% Pure Loro Piana Cashmere',
           'Silk lining detailing in dark burgundy',
@@ -213,7 +213,7 @@ export const DADZY_DROPS: InventoryDrop[] = [
         category: "Dad's Trousers",
         description: 'Tailored trousers in midnight navy superfine worsted wool. Engineered with a customizable hidden flex waistband that adjusts dynamically.',
         price: 24000,
-        image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800',
+        image: '/src/assets/images/dad_navy_trouser.png',
         specs: [
           '100% Super 130s Worsted Merino Wool',
           'Internal rubber shirt grips on the inner waistband',
