@@ -24,7 +24,7 @@ Antigravity operates using the following specialized sub-agent personas:
 * **QA & Security Agent:** Enforces AES-256-GCM encryption standards on database payloads, verifies Google OAuth state tokens, and monitors the exclusive 9-out-of-stock catalog ratios to maintain brand exclusivity.
 
 ## The Staging-to-Production Loop
-1. **Code:** Implement features strictly on the `staging` branch.
-2. **Monitor:** Push to the remote `staging` branch to trigger the CI/CD pipeline and the Vercel preview deployment.
-3. **Audit:** Await visual confirmation from the lead engineer via the Vercel Display Monitor.
-4. **Deploy:** Upon explicit approval, initiate a pull request to `main` and execute the production Terraform deployment.
+1. **Code:** Implement and test features locally. The Google AI Studio preview link (`https://ais-dev-wbgqat7u22d7qskiztb35t-579241826155.asia-east1.run.app`) must reflect edits in real-time.
+2. **Commit:** All files edited locally or inside the explorer must be committed and pushed to the GitHub `staging` branch as a secure backup of progress.
+3. **Deploy (Manual):** The Vercel staging/preview deployment must NOT build automatically on every commit. The user will trigger Vercel preview deployments manually from the Vercel dashboard when ready.
+4. **Deploy (Production):** Await review, then initiate a PR to `main` to trigger production deployments.
